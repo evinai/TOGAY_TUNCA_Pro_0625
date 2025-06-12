@@ -79,16 +79,114 @@ def main():
     if not check_requirements():
         return
 
-    # Paths
-    base_dir = "/home/evinai/Desktop/Togay_Tunca_CV_0625"
+    # Check for help flag
+    if len(sys.argv) > 1 and sys.argv[1] in ["--help", "-h"]:
+        print("CV to PDF Converter")
+        print("------------------")
+        print("Options:")
+        print("  No arguments: Convert English CV")
+        print("  --turkish: Convert Turkish CV")
+        print("  --article1: Convert English Article 1")
+        print("  --article1-turkish: Convert Turkish Article 1")
+        print("  --article2: Convert English Article 2")
+        print("  --article2-turkish: Convert Turkish Article 2")
+        print("  <filename.html>: Convert specific HTML file")
+        print("  --all: Convert all HTML files to PDFs")
+        print("------------------")
+        return
 
-    # Check for Turkish version argument or specific file
+    # Paths
+    base_dir = "/home/evinai/Desktop/TOGAY_TUNCA_Pro_0625"
+
+    # Check for arguments
     if len(sys.argv) > 1:
-        if sys.argv[1] == "--turkish":
-            html_file = os.path.join(base_dir, "cv_word_turkish_v3.html")
+        arg = sys.argv[1].lower()
+        if arg == "--turkish":
+            html_file = os.path.join(base_dir, "cv_word_turkish_v2_educator.html")
             output_file = os.path.join(
-                base_dir, "Togay_Tunca_CV_Turkish_WeasyPrint_v3.pdf"
+                base_dir, "Togay_Tunca_CV_Turkish_Educator_WeasyPrint.pdf"
             )
+        elif arg == "--article1":
+            html_file = os.path.join(
+                base_dir, "Article1_Education_Evolution_AI_Partnership.html"
+            )
+            output_file = os.path.join(
+                base_dir, "Article1_Education_Evolution_AI_Partnership.pdf"
+            )
+        elif arg == "--article1-turkish":
+            html_file = os.path.join(
+                base_dir, "Article1_Education_Evolution_AI_Partnership_Turkish.html"
+            )
+            output_file = os.path.join(
+                base_dir, "Article1_Education_Evolution_AI_Partnership_Turkish.pdf"
+            )
+        elif arg == "--article2":
+            html_file = os.path.join(base_dir, "Article2_Where_to_Start_with_AI.html")
+            output_file = os.path.join(base_dir, "Article2_Where_to_Start_with_AI.pdf")
+        elif arg == "--article2-turkish":
+            html_file = os.path.join(
+                base_dir, "Article2_Where_to_Start_with_AI_Turkish.html"
+            )
+            output_file = os.path.join(
+                base_dir, "Article2_Where_to_Start_with_AI_Turkish.pdf"
+            )
+        elif arg == "--all":
+            # Convert all HTML files
+            print("Converting all HTML files to PDFs...")
+
+            # Define files to convert
+            files_to_convert = [
+                (
+                    "cv_word_english_v2_educator.html",
+                    "Togay_Tunca_CV_Educator_WeasyPrint.pdf",
+                ),
+                (
+                    "cv_word_turkish_v2_educator.html",
+                    "Togay_Tunca_CV_Educator_TR_WeasyPrint.pdf",
+                ),
+                (
+                    "Article1_Education_Evolution_AI_Partnership.html",
+                    "Article1_Education_Evolution_AI_Partnership.pdf",
+                ),
+                (
+                    "Article1_Education_Evolution_AI_Partnership_Turkish.html",
+                    "Article1_Education_Evolution_AI_Partnership_Turkish.pdf",
+                ),
+                (
+                    "Article2_Where_to_Start_with_AI.html",
+                    "Article2_Where_to_Start_with_AI.pdf",
+                ),
+                (
+                    "Article2_Where_to_Start_with_AI_Turkish.html",
+                    "Article2_Where_to_Start_with_AI_Turkish.pdf",
+                ),
+                (
+                    "Article3_WhiteCollar_Workers_AI_Adaptation.html",
+                    "Article3_WhiteCollar_Workers_AI_Adaptation.pdf",
+                ),
+                (
+                    "Article3_WhiteCollar_Workers_AI_Adaptation_Turkish.html",
+                    "Article3_WhiteCollar_Workers_AI_Adaptation_Turkish.pdf",
+                ),
+            ]
+
+            for html_name, pdf_name in files_to_convert:
+                input_file = os.path.join(base_dir, html_name)
+                output = os.path.join(base_dir, pdf_name)
+
+                if os.path.exists(input_file):
+                    try:
+                        convert_with_weasyprint(
+                            input_file, output, os.path.join(base_dir, "pdf_styles.css")
+                        )
+                    except Exception as e:
+                        print(f"Error converting {html_name}: {str(e)}")
+                else:
+                    print(f"File not found: {input_file}")
+
+            print("\n✅ Batch conversion complete!")
+            return
+
         elif sys.argv[1].endswith(".html"):
             # Direct file path provided
             html_file = (
@@ -97,19 +195,16 @@ def main():
                 else os.path.join(base_dir, sys.argv[1])
             )
             # Determine output name based on input file
-            if "turkish" in os.path.basename(html_file).lower():
-                output_file = os.path.join(
-                    base_dir, "Togay_Tunca_CV_Turkish_WeasyPrint_v3.pdf"
-                )
-            else:
-                output_file = os.path.join(base_dir, "Togay_Tunca_CV_WeasyPrint_v3.pdf")
+            basename = os.path.basename(html_file)
+            output_name = os.path.splitext(basename)[0] + ".pdf"
+            output_file = os.path.join(base_dir, output_name)
         else:
-            print("Usage: python cv_to_pdf_converter.py [--turkish | filename.html]")
+            print("Invalid argument. Use --help for usage information.")
             return
     else:
         # Default to English
-        html_file = os.path.join(base_dir, "cv_word_english_v3.html")
-        output_file = os.path.join(base_dir, "Togay_Tunca_CV_WeasyPrint_v3.pdf")
+        html_file = os.path.join(base_dir, "cv_word_english_v2_educator.html")
+        output_file = os.path.join(base_dir, "Togay_Tunca_CV_Educator_WeasyPrint.pdf")
 
     css_file = os.path.join(base_dir, "pdf_styles.css")
 

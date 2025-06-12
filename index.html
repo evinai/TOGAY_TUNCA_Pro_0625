@@ -452,6 +452,325 @@
             }
         }
 
+        /* Articles Section Styles */
+        .articles-section {
+            margin-top: 3rem;
+            position: relative;
+            padding-top: 3rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+        
+        .articles-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #0066CC 15%, 
+                #0066CC 85%, 
+                transparent 100%);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(0,102,204,0.3);
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-heading h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #0066CC 0%, #0052a3 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-description {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-filters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(233,236,239,0.8);
+        }
+        
+        .filter-button, .lang-button {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(233,236,239,0.8);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-button:hover, .lang-button:hover {
+            background: rgba(0,102,204,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .filter-button.active, .lang-button.active {
+            background: #0066CC;
+            color: white;
+            border-color: #0052a3;
+            box-shadow: 0 4px 10px rgba(0,102,204,0.2);
+        }
+        
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 0.4rem;
+        }
+        
+        .lang-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .articles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .article-item {
+            display: flex;
+            background: linear-gradient(145deg, rgba(248,249,250,0.9), rgba(255,255,255,0.8));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(233,236,239,0.6);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .article-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,102,204,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .article-item:hover::before {
+            left: 100%;
+        }
+        
+        .article-item:hover {
+            border-color: #0066CC;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0,102,204,0.15),
+                0 0 0 1px rgba(0,102,204,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,249,250,0.9));
+        }
+        
+        .article-date {
+            flex: 0 0 120px;
+            font-size: 0.85rem;
+            color: #777;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 0.5rem;
+            position: relative;
+        }
+        
+        .article-date::after {
+            content: '📅';
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .article-item:hover .article-date::after {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        
+        .article-content {
+            flex: 1;
+            border-left: 1px dashed rgba(0,102,204,0.2);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+        
+        .article-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            background: linear-gradient(135deg, #0066CC 0%, #0052a3 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.7rem;
+        }
+        
+        .article-tag {
+            background: rgba(0,102,204,0.1);
+            color: #0066CC;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .article-item:hover .article-tag {
+            background: rgba(0,102,204,0.15);
+            transform: translateY(-1px);
+        }
+        
+        .article-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 3em;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+        
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0066CC 0%, #0052a3 100%);
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,102,204,0.3);
+        }
+        
+        .article-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .article-link:hover::before {
+            left: 100%;
+        }
+        
+        .article-link:hover {
+            background: linear-gradient(135deg, #0052a3 0%, #004080 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,102,204,0.2);
+        }
+        
+        .article-link.pdf {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+        }
+        
+        .article-link.pdf:hover {
+            background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
+            box-shadow: 0 4px 15px rgba(40,167,69,0.2);
+        }
+        
+        .lang-indicator {
+            font-size: 0.8rem;
+        }
+        
+        .articles-pagination {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .article-item {
+                flex-direction: column;
+            }
+            
+            .article-date {
+                flex: 0 0 auto;
+                margin-bottom: 1rem;
+                padding-top: 0;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .article-date::after {
+                margin-top: 0;
+                margin-left: 0.5rem;
+            }
+            
+            .article-content {
+                border-left: none;
+                border-top: 1px dashed rgba(0,102,204,0.2);
+                padding-left: 0;
+                margin-left: 0;
+                padding-top: 1rem;
+            }
+            
+            .language-toggle {
+                margin: 0.5rem auto 0;
+            }
+            
+            .filter-button, .lang-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .articles-section::before {
+                left: 5%;
+                right: 5%;
+            }
+        }
+        
         /* Password Protection Styles */
         .password-overlay {
             position: fixed;
@@ -634,39 +953,206 @@
                 <div class="name-section">
                     <div class="name">TOGAY TUNCA</div>
                     <div class="flag">🇹🇷</div>
-                    <div class="title">Casino Surveillance Manager | Security Consultant | AI-Python Developer</div>
+                    <div class="title">AI Foundations Instructor | AI-Python Developer</div>
                 </div>
             </div>
             <div class="description">
-                22+ years of international experience in casino operations, security management, and a new journey in AI development with python. 
-                Currently developing innovative solutions for variety of fields using Generative AI.
+                22+ years of international experience in casino operations, security management, and a new journey in AI development with Python. 
+                Currently developing innovative solutions and educational content for AI foundations and programming.
             </div>
         </div>
         
         <div class="cv-options">
             <div class="cv-card">
                 <div class="flag">🇹🇷</div>
-                <h3>Türkçe Özgeçmiş</h3>
+                <h3>Türkçe Sunum</h3>
                 <div class="cv-links">
-                    <a href="cv_word_turkish_v3.html" class="cv-link" target="_blank">Çevrimiçi Görüntüle</a>
-                    <a href="Togay_Tunca_CV_Turkish_WeasyPrint_v3.pdf" class="cv-link pdf-link" target="_blank">PDF İndir</a>
+                    <a href="cv_word_turkish_v2_educator.html" class="cv-link" target="_blank">Çevrimiçi Görüntüle</a>
+                    <a href="Togay_Tunca_CV_Turkish_Educator_WeasyPrint.pdf" class="cv-link pdf-link" target="_blank">PDF İndir</a>
                 </div>
             </div>
 
             <div class="cv-card">
                 <div class="flag">🇺🇸</div>
-                <h3>English CV</h3>
+                <h3>English Presentation</h3>
                 <div class="cv-links">
-                    <a href="cv_word_english_v3.html" class="cv-link" target="_blank">View Online</a>
-                    <a href="Togay_Tunca_CV_WeasyPrint_v3.pdf" class="cv-link pdf-link" target="_blank">Download PDF</a>
+                    <a href="cv_word_english_v2_educator.html" class="cv-link" target="_blank">View Online</a>
+                    <a href="Togay_Tunca_CV_Educator_WeasyPrint.pdf" class="cv-link pdf-link" target="_blank">Download PDF</a>
                 </div>
             </div>
         </div>
         
-        <div class="footer">
-            <p><strong>Professional Focus:</strong> Generative AI Development • Casino Surveillance Systems • Security Analytics</p>
-            <div class="contact-info">
+        <!-- Articles Section - Redesigned -->
+        <div class="articles-section">
+            <div class="section-heading">
+                <h2>📚 Articles & Educational Resources</h2>
+                <p class="section-description">Insights on AI foundations, Python development, and educational approaches</p>
+            </div>
+            
+            <div class="article-filters">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="ai">AI</button>
+                <button class="filter-button" data-filter="education">Education</button>
+                <button class="filter-button" data-filter="security">Security</button>
+                <div class="language-toggle">
+                    <span class="lang-label">Language:</span>
+                    <button class="lang-button active" data-lang="all">All</button>
+                    <button class="lang-button" data-lang="en">🇺🇸</button>
+                    <button class="lang-button" data-lang="tr">🇹🇷</button>
+                </div>
+            </div>
+            
+            <div class="articles-container">
+                <!-- Article 1 English -->
+                <div class="article-item" data-tags="ai education" data-lang="en">
+                    <div class="article-date">June 12, 2025</div>
+                    <div class="article-content">
+                        <h3>The Great Educational Divide: Why Static Curricula Are Failing in an AI-Accelerated World</h3>
+                        <div class="article-tags">
+                            <span class="article-tag">Education</span>
+                            <span class="article-tag">AI</span>
+                        </div>
+                        <p class="article-excerpt">
+                            Exploring how traditional educational systems struggle to keep pace with the rapid advancement of AI technologies...
+                        </p>
+                        <div class="article-actions">
+                            <a href="Article1_Education_Evolution_AI_Partnership.html" class="article-link" target="_blank">
+                                Read Article <span class="lang-indicator">🇺🇸</span>
+                            </a>
+                            <a href="Article1_Education_Evolution_AI_Partnership.pdf" class="article-link pdf" target="_blank">
+                                PDF <span class="lang-indicator">🇺🇸</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
+                <!-- Article 1 Turkish -->
+                <div class="article-item" data-tags="ai education" data-lang="tr">
+                    <div class="article-date">12 Haziran, 2025</div>
+                    <div class="article-content">
+                        <h3>Büyük Eğitim Uçurumu: Statik Müfredat Neden Yapay Zeka Hızlanan Dünyada Başarısız Oluyor</h3>
+                        <div class="article-tags">
+                            <span class="article-tag">Eğitim</span>
+                            <span class="article-tag">Yapay Zeka</span>
+                        </div>
+                        <p class="article-excerpt">
+                            Geleneksel eğitim sistemlerinin hızla ilerleyen Yapay Zeka teknolojilerine nasıl ayak uyduramadığını inceliyor...
+                        </p>
+                        <div class="article-actions">
+                            <a href="Article1_Education_Evolution_AI_Partnership_Turkish.html" class="article-link" target="_blank">
+                                Makaleyi Oku <span class="lang-indicator">🇹🇷</span>
+                            </a>
+                            <a href="Article1_Education_Evolution_AI_Partnership_Turkish.pdf" class="article-link pdf" target="_blank">
+                                PDF <span class="lang-indicator">🇹🇷</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 2 English -->
+                <div class="article-item" data-tags="ai" data-lang="en">
+                    <div class="article-date">June 12, 2025</div>
+                    <div class="article-content">
+                        <h3>Where to Start with AI: Talent, Taste, and the True Role of Artificial Intelligence</h3>
+                        <div class="article-tags">
+                            <span class="article-tag">AI</span>
+                            <span class="article-tag">Technology</span>
+                        </div>
+                        <p class="article-excerpt">
+                            A practical guide to understanding AI's capabilities and limitations, and how to best utilize this transformative technology...
+                        </p>
+                        <div class="article-actions">
+                            <a href="Article2_Where_to_Start_with_AI.html" class="article-link" target="_blank">
+                                Read Article <span class="lang-indicator">🇺🇸</span>
+                            </a>
+                            <a href="Article2_Where_to_Start_with_AI.pdf" class="article-link pdf" target="_blank">
+                                PDF <span class="lang-indicator">🇺🇸</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 2 Turkish -->
+                <div class="article-item" data-tags="ai" data-lang="tr">
+                    <div class="article-date">12 Haziran, 2025</div>
+                    <div class="article-content">
+                        <h3>Yapay Zekaya Nereden Başlamalı: Yetenek, Zevk ve Yapay Zekanın Gerçek Rolü</h3>
+                        <div class="article-tags">
+                            <span class="article-tag">Yapay Zeka</span>
+                            <span class="article-tag">Teknoloji</span>
+                        </div>
+                        <p class="article-excerpt">
+                            Yapay Zekanın yeteneklerini ve sınırlamalarını anlamak için pratik bir rehber ve bu dönüştürücü teknolojiyi en iyi şekilde nasıl kullanılacağı...
+                        </p>
+                        <div class="article-actions">
+                            <a href="Article2_Where_to_Start_with_AI_Turkish.html" class="article-link" target="_blank">
+                                Makaleyi Oku <span class="lang-indicator">🇹🇷</span>
+                            </a>
+                            <a href="Article2_Where_to_Start_with_AI_Turkish.pdf" class="article-link pdf" target="_blank">
+                                PDF <span class="lang-indicator">🇹🇷</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 3 English -->
+                <div class="article-item" data-tags="ai" data-lang="en">
+                    <div class="article-date">July 15, 2025</div>
+                    <div class="article-content">
+                        <h3>The Great Skill Shift: Why White-Collar Workers Aren't Prepared for AI Generation</h3>
+                        <div class="article-tags">
+                            <span class="article-tag">AI</span>
+                            <span class="article-tag">Workplace</span>
+                        </div>
+                        <p class="article-excerpt">
+                            Examining how white-collar professionals need to adapt to AI collaboration, with insights on management challenges and new skill development...
+                        </p>
+                        <div class="article-actions">
+                            <a href="Article3_WhiteCollar_Workers_AI_Adaptation.html" class="article-link" target="_blank">
+                                Read Article <span class="lang-indicator">🇺🇸</span>
+                            </a>
+                            <a href="Article3_WhiteCollar_Workers_AI_Adaptation.pdf" class="article-link pdf" target="_blank">
+                                PDF <span class="lang-indicator">🇺🇸</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 3 Turkish -->
+                <div class="article-item" data-tags="ai" data-lang="tr">
+                    <div class="article-date">15 Temmuz, 2025</div>
+                    <div class="article-content">
+                        <h3>Büyük Beceri Değişimi: Beyaz Yakalı Çalışanlar Yapay Zeka Çağına Neden Hazır Değil</h3>
+                        <div class="article-tags">
+                            <span class="article-tag">Yapay Zeka</span>
+                            <span class="article-tag">İş Hayatı</span>
+                        </div>
+                        <p class="article-excerpt">
+                            Beyaz yakalı profesyonellerin yapay zeka işbirliğine nasıl uyum sağlaması gerektiği, yönetim zorlukları ve yeni beceri geliştirme üzerine içgörüler...
+                        </p>
+                        <div class="article-actions">
+                            <a href="Article3_WhiteCollar_Workers_AI_Adaptation_Turkish.html" class="article-link" target="_blank">
+                                Makaleyi Oku <span class="lang-indicator">🇹🇷</span>
+                            </a>
+                            <a href="Article3_WhiteCollar_Workers_AI_Adaptation_Turkish.pdf" class="article-link pdf" target="_blank">
+                                PDF <span class="lang-indicator">🇹🇷</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination for future use -->
+            <div class="articles-pagination">
+                <span class="pagination-info">Showing all articles</span>
+                <!-- Pagination will be added when more articles are available -->
+            </div>
+        </div>
+        <!-- End Articles Section -->
+
+        <div class="footer">
+            <p><strong>Professional Focus:</strong> AI Education • Python Programming • Generative AI Development</p>
+            <div class="contact-info">
                 <p>💻 <a href="https://evinai.github.io/Tutorial-Python-0626/" target="_blank">Python Tutorial</a></p>
                 <p>📞 Phone: <a href="tel:+905333333333">+90 543 898 18 48</a></p>
                 <p>📧 Contact: <a href="mailto:togay.tunca@gmail.com">togay.tunca@gmail.com</a></p>
@@ -780,6 +1266,83 @@
         window.addEventListener('beforeunload', () => {
             // Uncomment the line below if you want users to re-enter password every time they visit
             // sessionStorage.removeItem('portfolio_access');
+        });
+        
+        // Article filtering and sorting functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const langButtons = document.querySelectorAll('.lang-button');
+            const articleItems = document.querySelectorAll('.article-item');
+            
+            // Filter by tag
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter articles
+                    articleItems.forEach(item => {
+                        const tags = item.getAttribute('data-tags');
+                        const lang = item.getAttribute('data-lang');
+                        const activeLang = document.querySelector('.lang-button.active').getAttribute('data-lang');
+                        
+                        if (
+                            (filter === 'all' || tags.includes(filter)) && 
+                            (activeLang === 'all' || lang === activeLang)
+                        ) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    updatePaginationInfo();
+                });
+            });
+            
+            // Filter by language
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter articles
+                    articleItems.forEach(item => {
+                        const itemLang = item.getAttribute('data-lang');
+                        const activeFilter = document.querySelector('.filter-button.active').getAttribute('data-filter');
+                        const tags = item.getAttribute('data-tags');
+                        
+                        if (
+                            (lang === 'all' || itemLang === lang) && 
+                            (activeFilter === 'all' || tags.includes(activeFilter))
+                        ) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    updatePaginationInfo();
+                });
+            });
+            
+            function updatePaginationInfo() {
+                const visibleArticles = document.querySelectorAll('.article-item[style="display: flex;"]').length;
+                const totalArticles = document.querySelectorAll('.article-item').length;
+                const paginationInfo = document.querySelector('.pagination-info');
+                
+                if (visibleArticles === totalArticles) {
+                    paginationInfo.textContent = 'Showing all articles';
+                } else {
+                    paginationInfo.textContent = `Showing ${visibleArticles} of ${totalArticles} articles`;
+                }
+            }
         });
     </script>
 </body>
