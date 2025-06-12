@@ -1,0 +1,16 @@
+{
+  "files.hotExit": "off",
+  "files.autoSave": "onFocusChange",
+  "git.autoRefresh": false,
+  "git.autoRepositoryDetection": false,
+  "scm.autoReveal": false,
+  "workbench.editor.restoreViewState": false,
+  "workbench.editor.enablePreview": false,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.venv/**": true
+  }
+}
