@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Page setup for WeasyPrint */
+        @page {
+            size: A4;
+            margin-top: 0.8in;
+            margin-bottom: 0.3in;
+            margin-left: 0.8in;
+            margin-right: 0.6in; /* Extremely narrow right margin */
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            font-size: 10.0pt; /* Slightly smaller font for better fit */
+            line-height: 1.15;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0066CC;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 2px solid #0066CC;
+        }
+        .name-section {
+            text-align: center;
+        }
+        .name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #0066CC;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 14pt;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+        .contact {
+            font-size: 10pt;
+            color: #666666;
+        }
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #0066CC;
+            border-bottom: 1px solid #0066CC;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+        }
+        .subsection-title {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        .job-title {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 1px;
+        }
+        .job-title-with-date {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 1px;
+        }
+        .job-date {
+            color: #666666;
+            font-style: italic;
+            font-weight: normal;
+        }
+        .company {
+            font-style: italic;
+            color: #666666;
+            margin-bottom: 0px;
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+        .date {
+            float: right;
+            color: #666666;
+            font-style: italic;
+        }
+        .achievement {
+            margin-left: 15px;
+            margin-bottom: 5px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .skill-category {
+            margin-bottom: 10px;
+        }
+        .skill-header {
+            font-weight: bold;
+            color: #0066CC;
+            margin-bottom: 3px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0066CC;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        /* Added styles for the new sections */
+        .future-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+        .comparison-box {
+            background-color: #e7f3ff;
+            border: 1px solid #0066CC;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 9.5pt;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .job-section {
+            margin-bottom: 15px;
+        }
+        .job-title-line {
+            color: #0066CC;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .company-indented {
+            margin-left: 20px;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+        .tutorial-link {
+            color: #0066CC;
+            text-decoration: underline;
+            font-weight: normal;
+        }
+        .tutorial-link:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin-top: 1px; /* Reduced from 5px to 1px to bring lists closer to job headers */
+            margin-bottom: 5px;
+            padding-left: 0px;
+            list-style-type: none; /* Remove default bullets */
+        }
+        li {
+            margin-bottom: 3px;
+            margin-left: 20px;
+            text-indent: -20px;
+        }
+        li:before {
+            content: "- "; /* Add hyphen as bullet */
+        }
+        /* Handle nested lists */
+        li ul {
+            margin-top: 3px;
+        }
+        
+        /* Web-specific styling for better browser viewing */
+        @media screen {
+            body {
+                background-color: #f5f5f5 !important;
+                margin: 0 !important;
+                padding: 20px !important;
+            }
+            
+            .web-container {
+                max-width: 8.5in;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: #fff;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                border-radius: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="web-container">
+    <div class="header">
+        <div class="header-content">
+            <img src="togayresım.png" alt="Togay Tunca" class="profile-image">
+            <div class="name-section">
+                <div class="name">TOGAY TUNCA</div>
+                <div class="title">Python & Yapay Zeka Eğitmeni | Teknoloji Eğitmeni | Geleceğe Hazır Öğrenme Mentoru</div>
+            </div>
+        </div>
+        <div class="contact">
+            📧 togay.tunca@gmail.com | 📱 +90 543 898-18-48 | 📍 İstanbul, Türkiye<br>
+        </div>
+    </div>
+
+    <!-- New section from v3 -->
+    <div class="section-title">GELECEK ŞİMDİ BAŞLIYOR</div>
+    <div class="future-box">
+        <strong>İnsan tarihinin en dönüştürücü teknolojik devrimini yaşıyoruz.</strong> Yapay Zeka sadece bireysel sektörleri değiştirmekle kalmıyor—problem çözmeye, yaratıcılığa ve insan potansiyeline yaklaşımımızı temelden yeniden şekillendiriyor. 
+        <br><br>
+        <strong>Eski Yöntem:</strong> Karmaşık teknik becerileri öğrenmek için yıllar harcamak, katı sistemler içinde çalışmak ve sınırlamaları "işler böyle yapılır" diye kabul etmek.
+        <br><br>
+        <strong>Yapay Zeka Yöntemi:</strong> Problemleri tanımlamak, süreçleri anlamak, çözümler tasarlamak ve karmaşık uygulamayı Yapay Zeka'ya bırakmak. "Bunu nasıl kodlarım?" sorusundan "Sıradaki hangi problemi çözeceğim?" sorusuna geçiyoruz.
+        <br><br>
+        Bu insan yaratıcılığını değiştirmekle ilgili değil—katlanarak artırmakla ilgili. <strong>Soru, Yapay Zeka'nın alanınızı dönüştürüp dönüştürmeyeceği değil; bu dönüşüme liderlik mi edeceğiniz yoksa yakalamaya mı çalışacağınız.</strong>
+    </div>
+
+    <!-- New section from v3 -->
+    <div class="section-title">YAPAY ZEKA: GEÇMİŞTEN BUGÜNE DÖNÜŞÜM</div>
+    
+    <div class="comparison-box">
+        <strong>📈 İş Analitiği</strong><br>
+        <strong>Eskiden:</strong> Aylarca veri hazırlığı, pahalı danışmanlar, statik raporlar<br>
+        <strong>Şimdi:</strong> Gerçek zamanlı içgörüler, doğal dil sorguları, herhangi bir işletme sahibinin erişebileceği tahmine dayalı modelleme
+    </div>
+
+    <div class="comparison-box">
+        <strong>🏥 Sağlık</strong><br>
+        <strong>Eskiden:</strong> Manuel tanı, kağıt kayıtlar, reaktif tedavi<br>
+        <strong>Şimdi:</strong> Yapay Zeka destekli tanı, kişiselleştirilmiş tedavi planları, tahmine dayalı sağlık izleme
+    </div>
+
+    <div class="comparison-box">
+        <strong>🎓 Eğitim</strong><br>
+        <strong>Eskiden:</strong> Herkese uyan tek müfredat, sınırlı kaynaklar, standardize testler<br>
+        <strong>Şimdi:</strong> Kişiselleştirilmiş öğrenme yolları, Yapay Zeka öğretmenleri, gerçek zamanlı ilerleme adaptasyonu
+    </div>
+
+    <div class="comparison-box">
+        <strong>💼 Profesyonel Hizmetler</strong><br>
+        <strong>Eskiden:</strong> Manuel belge incelemesi, tekrarlayan görevler, zamana dayalı ücretlendirme<br>
+        <strong>Şimdi:</strong> Otomatik analiz, değer temelli hizmetler, Yapay Zeka destekli karar verme
+    </div>
+
+    <div class="section-title">MİSYON & VİZYON</div>
+    <div class="summary-box">
+        <strong>Kendi kendine öğrenen bir geliştirici</strong> olarak, çoklu sektörlerde ve uluslararası iş ortamlarında edindiğim geniş deneyimle, çeşitli mesleki geçmişlerin teknik öğrenmeyi ve inovasyonu nasıl zenginleştirdiğine ilk elden tanık oldum. <strong>Yapay Zeka ve Üretken Yapay Zeka</strong> alanındaki önemli gelişmelerin ardından, kendimi yaşam boyu öğrenen ve eğitmen olmaya adadım, çeşitli alanlardaki ve uluslararası deneyimimi kullanıyorum.
+        <br><br>
+        <strong>Eğitim Felsefesi:</strong> Bugünün hızla değişen teknolojik ortamında, her zaman hayalini kurduğumuz çözümleri yaratmak için hiç bu kadar iyi bir fırsat olmamıştı. Ancak, Yapay Zeka ve teknolojideki haftalık gelişmelerle öğrenmek zorlu olabilir. Bu yolculuk, benzer ilgi alanlarını ve sürekli gelişime olan bağlılığı paylaşan deneyimli mentorlarla en iyi şekilde üstlenilebilir.
+        <br><br>
+        <strong>Öğretim Yaklaşımı:</strong> Kariyerim boyunca <strong>binlerce kişiye</strong> profesyonel yolculuklarında koçluk yapma ayrıcalığına sahip oldum, daha büyük başarı ve tatmin elde etmelerine yardımcı oldum. Hem Python hem de Yapay Zeka öğrenmenin ve öğretmenin uzmanlık, sabır ve doğru rehberlik gerektirdiğini anlayarak, bu güçlü teknolojileri tüm geçmişlerden ve yaşlardan öğrenenler için erişilebilir ve pratik hale getirmeye kararlıyım - meraklı çocuklardan mevcut alanlarında Python ve Yapay Zeka kullanmak isteyen iş profesyonellerine kadar.
+    </div>
+    <div class="section-title">ÖĞRETİM UZMANLIĞI</div>
+    <div class="skills-grid">
+        <div>
+            <div class="subsection-title">Python Programlama Temelleri</div>
+            <ul>
+                <li>Her yaş ve seviyeye uygun Python temelleri</li>
+                <li>Nesne yönelimli programlama kavramları</li>
+                <li>Veri yapıları ve algoritmalar</li>
+                <li>FastAPI ve modern framework'lerle web geliştirme</li>
+            </ul>
+            
+            <div class="subsection-title">Yapay Zeka Geliştirme & Yaşam Döngüsü</div>
+            <ul>
+                <li>Yapay Zeka ile problem tanımlama ve çözüm tasarımı</li>
+                <li>Yapay Zeka entegrasyonu için iş süreçlerini anlama</li>
+                <li>Büyük Dil Modeli entegrasyonu ve uygulaması</li>
+                <li>Prompt mühendisliği ve Yapay Zeka etkileşim tasarımı</li>
+                <li>Kavramdan uygulamaya praktik Yapay Zeka çözümleri geliştirme</li>
+            </ul>
+        </div>
+        <div>
+            <div class="subsection-title">Pratik Python Uygulamaları</div>
+            <ul>
+                <li>Veri analizi ve iş otomasyonu için Python</li>
+                <li>Python'un mevcut iş akışlarıyla entegrasyonu</li>
+                <li>Belirli sektörler için özel araçlar ve çözümler oluşturma</li>
+                <li>API geliştirme ve sistem entegrasyonu</li>
+                <li>Çeşitli alanlarda gerçek dünya projesi uygulaması</li>
+            </ul>
+            
+            <div class="subsection-title">Mentorluk & Profesyonel Gelişim</div>
+            <ul>
+                <li>Çocuklar ve gençler için pratik Python becerileri</li>
+                <li>Profesyoneller için işe odaklı Python uygulamaları</li>
+                <li>Proje tabanlı öğrenme metodolojileri</li>
+                <li>Uluslararası iş deneyimi içgörüleri</li>
+                <li>Liderlik ve takım yönetimi yetenekleri</li>
+                <li>Sürekli öğrenme stratejileri</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">EĞİTİM YOLCULUĞU & DENEYİM</div>
+    <div class="summary-box">
+        <strong>Kendi Kendine Öğrenen Geliştiriciden Eğitmene:</strong> Teknolojik yolculuğum, kod yoluyla gerçek dünya problemlerini çözme tutkusuyla yönlendirilen kendi kendine öğrenme ile başladı. Bu deneyim, bana sadece geliştirmenin teknik yönlerini değil, aynı zamanda bu becerileri farklı geçmişlere sahip kişilere öğretmenin en etkili yollarını da öğretti.
+        <br><br>
+        <strong>Eğitimi Şekillendiren Sektör Deneyimi:</strong> Teknolojiyi çeşitli iş bağlamlarında yıllar boyunca uyguladıktan sonra, profesyonel ortamlarda hangi becerilerin ve yaklaşımların en değerli olduğu konusunda benzersiz içgörüler geliştirdim. Bu gerçek dünya perspektifi, eğitim tekliflerimi şekillendiriyor, sadece teoriyi aşan gerçekten uygulanabilir bilgi sağlıyor.
+        <br><br>
+        <strong>Uluslararası Perspektif:</strong> Birden fazla ülke ve kültürde çalıştığım için, teknoloji eğitimine küresel bir bakış açısı getiriyorum. Bu deneyim bana, etkili öğretimin evrensel problem çözme prensiplerine odaklanırken farklı öğrenme stillerine uyum sağlaması gerektiğini öğretti.
+    </div>
+    
+    <!-- New section from v3 -->
+    <div class="section-title">GELECEK NEDEN YAPAY ZEKA ETKİNLEŞTİRİLMİŞ PROFESYONELLERE AİT</div>
+    
+    <div class="future-box">
+        <strong>Yeni Profesyonel Gerçeklik:</strong> Önümüzdeki 5 yılda, en başarılı profesyoneller her şeyi manuel olarak yapabilenler değil, problemleri tanımlayabilen, çözümler tasarlayabilen ve bunları uygulamak için Yapay Zeka sistemlerini yönlendirebilen kişiler olacak.
+        <br><br>
+        <strong>Çocuklar ve Gençler İçin:</strong> Yapay Zeka entegreli öğrenmeye başlamak, bu araçlar daha karmaşık hale geldikçe onlara nasıl kullanacaklarını anlamada 10 yıllık bir avantaj sağlar.
+        <br><br>
+        <strong>İş Profesyonelleri İçin:</strong> Yapay Zeka mevcut uzmanlığınızı katlanarak güçlendirebilir. Kariyerinizi değiştirmek yerine, Yapay Zeka yeteneklerini entegre ederek mevcut alanınızı dönüştürebilirsiniz.
+    </div>
+
+    <div class="section-title">YAYINLANMIŞ EĞİTİM KAYNAKLARI (geliştiriliyor)</div>
+    
+    <div class="job-section">
+        <div class="job-title-line">✦ Python Temelleri & Uygulamalı Programlama</div>
+        <ul>
+            <li><a href="https://evinai.github.io/Tutorial-Python-0626/" class="tutorial-link">Herkes İçin Python Öğrenimi</a> - Her kesimden öğrenenler için tasarlanmış kapsamlı interaktif öğretici</li>
+            <li><a href="https://evinai.github.io/Tutorial-Python-0626/projects/" class="tutorial-link">Python Proje Kütüphanesi</a> - Beceri geliştirme için pratik proje tabanlı öğrenme kaynakları</li>
+            <li><strong>Odak:</strong> Temellerden ileri uygulamalara kadar aşamalı beceri geliştirme</li>
+        </ul>
+    </div>
+
+    <div class="job-section">
+        <div class="job-title-line">✦ Yapay Zeka & İleri Teknoloji Kaynakları</div>
+        <ul>
+            <li><a href="https://evinai.github.io/Tutorials_All_0626/" class="tutorial-link">Yapay Zeka Programlama Serisi</a> - Modern Yapay Zeka framework'leriyle geliştirmeye yönelik pratik rehber</li>
+            <li><a href="https://evinai.github.io/Tutorials_All_0626/llm/" class="tutorial-link">LLM Entegrasyon Rehberi</a> - Uygulamalarda LLM'leri uygulamaya yönelik adım adım yaklaşım</li>
+            <li><strong>Yaklaşım:</strong> Gerçek dünya uygulamalarıyla iş odaklı uygulama</li>
+        </ul>
+    </div>
+
+    <div class="job-section">
+        <div class="job-title-line">✦ Özel Programlama Dersleri</div>
+        <ul>
+            <li><a href="https://evinai.github.io/tutorials_2025/tr/" class="tutorial-link">Veri Analizi & Otomasyon</a> - Sektöre özel otomasyon çözümleri</li>
+            <li><a href="https://evinai.github.io/tutorials_2025/api/" class="tutorial-link">API Geliştirme Rehberi</a> - Sağlam ve ölçeklenebilir API sistemleri oluşturma</li>
+            <li><strong>Hedef:</strong> Sektöre özel uygulamalar ve profesyonel beceri geliştirme</li>
+        </ul>
+    </div>
+
+    <div class="section-title">GÜNCEL EĞİTİM PROJELERİ & VAKA ÇALIŞMALARI</div>
+    <ul>
+        <li><strong>Genç Öğrenciler İçin Yapay Zeka Kavram Entegrasyonu:</strong> İnteraktif projeler aracılığıyla 8-12 yaş arası çocuklara Yapay Zeka kavramlarını tanıtan yaşa uygun yollar geliştirme</li>
+        <li><strong>İş Analizi Otomasyonu:</strong> İş profesyonelleriyle birlikte Python ve LLM analizi kullanarak raporlama sistemlerini otomatikleştirme</li>
+        <li><strong>Sağlık Veri Projeleri:</strong> Sağlık hizmeti sağlayıcıları için hasta veri trendlerini analiz etmek ve bakım planlarını optimize etmek için özel araçlar oluşturma</li>
+        <li><strong>PDF Bilgi Sistemleri:</strong> Gelişmiş belge analizi ve bilgi çıkarımı için yerel LLM RAG uygulaması</li>
+        <li><strong>Eğitim İçeriği Platformu:</strong> Uygulamalı uygulamayla Python, Yapay Zeka ve API Geliştirme'yi kapsayan kapsamlı eğitimler</li>
+    </ul>
+
+    <div class="section-title">ÖĞRENCİ BAŞARISI & ÖĞRENME ÇIKTILARI</div>
+    
+    <div class="summary-box">
+        <strong>Pratik Beceri Geliştirme:</strong> Öğrenciler sadece teorik bilgi değil, seçtikleri alanlarda hemen uygulanabilecek gerçek uygulamalar oluşturma konusunda pratik deneyim kazanır.
+        <br><br>
+        <strong>Sektöre Hazır Bilgi:</strong> Gerçek dünya iş gereksinimleri ve güncel endüstri standartlarına dayalı öğrenme müfredatı, çeşitli mesleklerde pratik ilgi sağlar.
+        <br><br>
+        <strong>Portfolyo Geliştirme:</strong> Her öğrenci, ilgi alanlarına ve hedeflerine uygun bağlamlarda Python ve Yapay Zeka yeteneklerini gösteren çoklu projeler tamamlar.
+        <br><br>
+        <strong>Sürekli Destek & Güven Oluşturma:</strong> Kurs tamamlama süresince ve sonrasında devam eden mentorluk ve rehberlik, herhangi bir alanda Python ve Yapay Zeka'yı uygulamak için hem teknik becerilere hem de profesyonel güvene odaklanır.
+    </div>
+
+    <div class="section-title">EĞİTİM & SERTİFİKALAR</div>
+
+    <div class="subsection-title">Akademik Geçmiş</div>
+    <ul>
+         <li><strong>Önlisans Derecesi</strong> - Turizm ve Otel İşletmeciliği | iktisadi ve idari bilimler | Muğla Üniversitesi Ortaca, Türkiye (2009)
+            <br>GPA: 3.04/4.0, Her iki dönem Akademik Onur (İlk Dönem: Bölüm birincisi, Onur Derecesi ile)</li>
+        <li><strong>Bilgisayar Programcılığı</strong> - Anadolu Üniversitesi, Eskişehir, Türkiye (Devam Edilmedi)
+            <br>Daha pratik, sektörle uyumlu uzmanlık için açık kaynak ve ücretli özel kurslar ve uygulamalı projelere geçiş</li>
+        <li><strong>Lise Diploması</strong> - Turizm ve Otel İşletmeciliği | Altunizade Turizm Okulu, İstanbul (1993)</li>
+    </ul>
+
+    <div class="subsection-title">Profesyonel Sertifikalar</div>
+    <p style="font-style: italic; color: #666; font-size: 9pt; margin-bottom: 15px;">
+        <em>Not: Uzmanlıklar için, sadece tamamlanan toplam kurs sayısı belirtilmiştir. Ayrıntılı kurs listeleri ve sertifikalar talep üzerine mevcuttur.</em>
+    </p>
+
+    <div class="skill-category">
+        <div class="skill-header">Yapay Zeka & Makine Öğrenimi (40+ Özel Kurs)</div>
+        <ul>
+            <li><strong>DeepLearning.AI (16 kurs):</strong>
+                ChatGPT Prompt Mühendisliği Geliştiriciler İçin,
+                LLM Uygulama Geliştirme için LangChain,
+                ChatGPT API ile Sistemler Oluşturma,
+                LangChain Chat with Your Data,
+                Büyük Dil Modellerini İnce Ayarlama,
+                Metin Gömmeleri Anlama ve Uygulama,
+                Llama 2&3 ile Prompt Mühendisliği,
+                CrewAI ile Çoklu Yapay Zeka Ajan Sistemleri,
+                LangGraph'ta Yapay Zeka Ajanları,
+                Multimodal Llama 3.2'ye Giriş,
+                Gradio ile Üretken Yapay Zeka Uygulamaları Oluşturma,
+                o1 ile Muhakeme,
+                Anthropic ile Bilgisayar Kullanımına Doğru,
+                Llamaindex ile Agentic Rag Oluşturma,
+                İş Düşünürlerinin Semantic Kernel ile Yapay Zeka Eklentileri Oluşturmaya Başlaması
+            </li>
+            <li><strong>IBM Uzmanlıkları:</strong> Herkes İçin Yapay Zeka Temelleri (3 kurs), IBM Yapay Zeka Geliştirici (6 kurs), Uygulamalı Yapay Zeka Uzmanlığı, Veri Bilimi Profesyonel Sertifikası (9 kurs)</li>
+            <li><strong>IBM Cognitive Class:</strong> LLM Kullanarak PDF Dokümanlarını Analiz Eden Bir Chatbot Oluşturma, LLM'ler ve Üretken Yapay Zeka ile Özel Verilerinizi Özetleme, Açık Kaynak ile Vektör Veritabanı Oluşturma, Prompt Mühendisliği Sanatı, Araba Kilometresi ve Elmas Fiyatı için Tahminler: Regresyon</li>
+            <li><strong>IBM DevOps:</strong> Mikroservisler ve Sunucusuz Kullanarak Uygulama Geliştirme, Git ve Github'a Başlangıç, Geliştiriciler ve DevOps Profesyonelleri için Uygulama Güvenliği, Linux Komutları ve Shell Programlama'ya Uygulamalı Giriş, Docker, Kubernetes ve OpenShift ile Konteyner'lara Giriş</li>
+            <li><strong>Stanford/Coursera:</strong> Makine Öğrenmesi</li>
+            <li><strong>Google Cloud:</strong> Vertex AI ile Üretken Yapay Zeka (2 kurs)</li>
+            <li><strong>Duke Üniversitesi:</strong> Ölçekte Bulut Bilişim Çözümleri Oluşturma Uzmanlığı (4 kurs)</li>
+            <li><strong>Workera:</strong> Yapay Zeka Okuryazarlığı ve Yapay Zeka Akıcılığı Değerlendirme sertifikaları</li>
+            <li><strong>Udemy:</strong> Python İleri Seviye, Python Nesne Yönelimli Programlama, HTML, CSS, Makine Öğrenmesi, Python Paketleme, CI/CD kursları, OpenAI, Ollama Entegrasyonu, LangChain, LangGraph kursları</li>
+        </ul>
+    </div>
+
+    <div class="skill-category">
+        <div class="skill-header">Güvenlik & Risk Yönetimi</div>
+        <ul>
+            <li><strong>ASIS International:</strong> Fiziksel Güvenlik Profesyoneli (PSP) kursları (8 kurs)</li>
+            <li><strong>ASIS Özel Eğitim:</strong> Tehdit Değerlendirme, Fiziksel Koruma Sistemleri, CCTV & Dijital Video, Erişim Kontrol Sistemleri</li>
+            <li><strong>Maryland Üniversitesi:</strong> Terörizmi Anlama ve Terörizm Tehdidi</li>
+            <li><strong>Devlet Sertifikası:</strong> Özel Güvenlik Eğitim Sertifikası</li>
+        </ul>
+    </div>
+
+    <div class="skill-category">
+        <div class="skill-header">Teknik Beceri Geliştirme</div>
+        <ul>
+            <li><strong>Bulut Platformları:</strong> AWS, GCP, Azure, IBM Cloud temelleri ve uygulaması</li>
+            <li><strong>Programlama & Geliştirme:</strong> Python, FastAPI, Docker, SQLAlchemy ORM, Python Paketleme</li>
+            <li><strong>Web Geliştirme:</strong> HTML, CSS, FastAPI Framework, Jinja2 Templates</li>
+            <li><strong>Yapay Zeka Framework'leri & Kütüphaneleri:</strong> OpenAI, Anthropic, Hugging Face, LangChain, LangGraph, CrewAI, Pydantic-AI</li>
+            <li><strong>Veri Bilimi & Analitik:</strong> Scikit-learn, Pandas, NumPy, İstatistiksel Analiz</li>
+            <li><strong>DevOps:</strong> Docker, CI/CD Pipeline'ları</li>
+        </ul>
+    </div>
+    <div class="section-title">DİLLER</div>
+    <ul>
+        <li><strong>Türkçe:</strong> Anadil</li>
+        <li><strong>İngilizce:</strong> İleri seviye</li>
+        <li><strong>Almanca:</strong> Başlangıç</li>
+        <li><strong>Rumence:</strong> Başlangıç</li>
+    </ul>
+
+    <div class="section-title">ÖĞRETİM UYGUNLUĞU & İLETİŞİM</div>
+    <ul>
+        <li><strong>Öğretim Formatları:</strong> Bire bir özel ders, küçük grup oturumları, online kurslar ve atölye formatları</li>
+        <li><strong>Hedef Gruplar:</strong> Çocuklar (8+), gençler, genç yetişkinler, üniversite öğrencileri ve alanlarında Python ve Yapay Zeka kullanmak isteyen iş profesyonelleri</li>
+        <li><strong>Diller:</strong> Türkçe (anadil) ve İngilizce (ileri seviye) olarak eğitim</li>
+        <li><strong>Program Esnekliği:</strong> Akşamlar ve hafta sonları dahil esnek programlama için uygun</li>
+        <li><strong>Öğrenme Ortamı:</strong> Hem yüz yüze (İstanbul bölgesi) hem de uzaktan online oturumlar</li>
+        <li><strong>Danışmanlık:</strong> Öğrenme hedeflerini değerlendirmek ve kişiselleştirilmiş müfredat oluşturmak için ücretsiz ilk danışma</li>
+        <li><strong>Taahhüt:</strong> Öğrenci başarısına adanmış, devam eden destek ve ilerleme takibi</li>
+    </ul>
+
+    <hr style="margin-top: 30px; border: none; border-top: 1px solid #ccc;">
+    <p style="text-align: center; font-style: italic; color: #666; font-size: 10pt;">
+        Python & Yapay Zeka öğrenme yolculuğunuza başlamaya hazır mısınız?<br>
+        Ücretsiz danışmanlık ve kişiselleştirilmiş öğrenme planı için Togay ile iletişime geçin<br>
+        📧 togay.tunca@gmail.com | 📱 +90 543 898-18-48
+    </p>
+    
+    <script>
+    // Add page numbers when printing
+    window.onload = function() {
+        // CSS for page numbers in print mode only
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        style.media = 'print';
+        style.innerHTML = `
+            @page {
+                margin-bottom: 1cm;
+            }
+            
+            .page-number {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                font-size: 9pt;
+                color: #666;
+                padding: 10px;
+                content: counter(page);
+            }
+            
+            .page-number:after {
+                content: "Page " counter(page);
+            }
+            
+            .page-number {
+                counter-increment: page;
+            }
+            
+            /* Hide on screen */
+            @media screen {
+                .page-number {
+                    display: none;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Insert page number elements
+        var pageNumber = document.createElement('div');
+        pageNumber.className = 'page-number';
+        document.body.appendChild(pageNumber);
+    };
+    </script>
+    </div> <!-- Close web-container -->
+</body>
+</html>

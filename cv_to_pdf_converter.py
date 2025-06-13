@@ -86,10 +86,16 @@ def main():
         print("Options:")
         print("  No arguments: Convert English CV")
         print("  --turkish: Convert Turkish CV")
+        print("  --english-v4: Convert English CV v4")
+        print("  --turkish-v4: Convert Turkish CV v4")
+        print("  --english-v5: Convert English CV v5")
+        print("  --turkish-v5: Convert Turkish CV v5")
         print("  --article1: Convert English Article 1")
         print("  --article1-turkish: Convert Turkish Article 1")
         print("  --article2: Convert English Article 2")
         print("  --article2-turkish: Convert Turkish Article 2")
+        print("  --article3: Convert English Article 3")
+        print("  --article3-turkish: Convert Turkish Article 3")
         print("  <filename.html>: Convert specific HTML file")
         print("  --all: Convert all HTML files to PDFs")
         print("------------------")
@@ -105,6 +111,26 @@ def main():
             html_file = os.path.join(base_dir, "cv_word_turkish_v2_educator.html")
             output_file = os.path.join(
                 base_dir, "Togay_Tunca_CV_Turkish_Educator_WeasyPrint.pdf"
+            )
+        elif arg == "--english-v4":
+            html_file = os.path.join(base_dir, "cv_word_english_v4_educator.html")
+            output_file = os.path.join(
+                base_dir, "Togay_Tunca_CV_English_v4_Educator_WeasyPrint.pdf"
+            )
+        elif arg == "--turkish-v4":
+            html_file = os.path.join(base_dir, "cv_word_turkish_v4_educator.html")
+            output_file = os.path.join(
+                base_dir, "Togay_Tunca_CV_Turkish_v4_Educator_WeasyPrint.pdf"
+            )
+        elif arg == "--english-v5":
+            html_file = os.path.join(base_dir, "cv_word_english_v5_educator.html")
+            output_file = os.path.join(
+                base_dir, "Togay_Tunca_CV_English_v5_Educator_WeasyPrint.pdf"
+            )
+        elif arg == "--turkish-v5":
+            html_file = os.path.join(base_dir, "cv_word_turkish_v5_educator.html")
+            output_file = os.path.join(
+                base_dir, "Togay_Tunca_CV_Turkish_v5_Educator_WeasyPrint.pdf"
             )
         elif arg == "--article1":
             html_file = os.path.join(
@@ -130,6 +156,20 @@ def main():
             output_file = os.path.join(
                 base_dir, "Article2_Where_to_Start_with_AI_Turkish.pdf"
             )
+        elif arg == "--article3":
+            html_file = os.path.join(
+                base_dir, "Article3_WhiteCollar_Workers_AI_Adaptation.html"
+            )
+            output_file = os.path.join(
+                base_dir, "Article3_WhiteCollar_Workers_AI_Adaptation.pdf"
+            )
+        elif arg == "--article3-turkish":
+            html_file = os.path.join(
+                base_dir, "Article3_WhiteCollar_Workers_AI_Adaptation_Turkish.html"
+            )
+            output_file = os.path.join(
+                base_dir, "Article3_WhiteCollar_Workers_AI_Adaptation_Turkish.pdf"
+            )
         elif arg == "--all":
             # Convert all HTML files
             print("Converting all HTML files to PDFs...")
@@ -143,6 +183,22 @@ def main():
                 (
                     "cv_word_turkish_v2_educator.html",
                     "Togay_Tunca_CV_Educator_TR_WeasyPrint.pdf",
+                ),
+                (
+                    "cv_word_english_v4_educator.html",
+                    "Togay_Tunca_CV_English_v4_Educator_WeasyPrint.pdf",
+                ),
+                (
+                    "cv_word_turkish_v4_educator.html",
+                    "Togay_Tunca_CV_Turkish_v4_Educator_WeasyPrint.pdf",
+                ),
+                (
+                    "cv_word_english_v5_educator.html",
+                    "Togay_Tunca_CV_English_v5_Educator_WeasyPrint.pdf",
+                ),
+                (
+                    "cv_word_turkish_v5_educator.html",
+                    "Togay_Tunca_CV_Turkish_v5_Educator_WeasyPrint.pdf",
                 ),
                 (
                     "Article1_Education_Evolution_AI_Partnership.html",

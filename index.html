@@ -919,7 +919,8 @@
     </style>
 </head>
 <body>
-    <!-- Password Protection Overlay -->
+    <!-- Password Protection Overlay (Currently Disabled) -->
+    <!-- 
     <div class="password-overlay" id="passwordOverlay">
         <div class="password-container">
             <div class="lock-icon">🔒</div>
@@ -942,9 +943,10 @@
             </form>
         </div>
     </div>
+    -->
 
     <!-- Main Content -->
-    <div class="main-content" id="mainContent">
+    <div class="main-content visible" id="mainContent">
     <div class="container">
         <div class="header">
             
@@ -963,6 +965,24 @@
         </div>
         
         <div class="cv-options">
+            <div class="cv-card">
+                <div class="flag">🇹🇷</div>
+                <h3>Türkçe Sunum - v5</h3>
+                <div class="cv-links">
+                    <a href="cv_word_turkish_v5_educator.html" class="cv-link" target="_blank">Çevrimiçi Görüntüle</a>
+                    <a href="Togay_Tunca_CV_Turkish_v5_Educator_WeasyPrint.pdf" class="cv-link pdf-link" target="_blank">PDF İndir</a>
+                </div>
+            </div>
+
+            <div class="cv-card">
+                <div class="flag">🇺🇸</div>
+                <h3>English Presentation - v5</h3>
+                <div class="cv-links">
+                    <a href="cv_word_english_v5_educator.html" class="cv-link" target="_blank">View Online</a>
+                    <a href="Togay_Tunca_CV_English_v5_Educator_WeasyPrint.pdf" class="cv-link pdf-link" target="_blank">Download PDF</a>
+                </div>
+            </div>
+
             <div class="cv-card">
                 <div class="flag">🇹🇷</div>
                 <h3>Türkçe Sunum</h3>
@@ -1163,7 +1183,8 @@
     </div> <!-- Close main-content -->
 
     <script>
-        // Password Protection Script
+        // Password Protection Script (Currently Disabled)
+        /*
         class PasswordProtection {
             constructor() {
                 this.correctPassword = 'togay2025'; // Change this to your desired password
@@ -1258,6 +1279,8 @@
         document.head.appendChild(style);
 
         // Initialize password protection when page loads
+        // Commented out password protection
+        /*
         document.addEventListener('DOMContentLoaded', () => {
             new PasswordProtection();
         });
@@ -1267,6 +1290,7 @@
             // Uncomment the line below if you want users to re-enter password every time they visit
             // sessionStorage.removeItem('portfolio_access');
         });
+        */
         
         // Article filtering and sorting functionality
         document.addEventListener('DOMContentLoaded', function() {

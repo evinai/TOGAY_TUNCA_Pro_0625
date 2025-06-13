@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Page setup for WeasyPrint */
+        @page {
+            size: A4;
+            margin-top: 0.8in;
+            margin-bottom: 0.3in;
+            margin-left: 0.8in;
+            margin-right: 0.6in;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            font-size: 10.0pt;
+            line-height: 1.15;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0066CC;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 2px solid #0066CC;
+        }
+        .name-section {
+            text-align: center;
+        }
+        .name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #0066CC;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 14pt;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+        .contact {
+            font-size: 10pt;
+            color: #666666;
+        }
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #0066CC;
+            border-bottom: 1px solid #0066CC;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+        }
+        .subsection-title {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        .job-title {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 1px;
+        }
+        .job-title-with-date {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 1px;
+        }
+        .job-date {
+            color: #666666;
+            font-style: italic;
+            font-weight: normal;
+        }
+        .company {
+            font-style: italic;
+            color: #666666;
+            margin-bottom: 0px;
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+        .date {
+            float: right;
+            color: #666666;
+            font-style: italic;
+        }
+        .achievement {
+            margin-left: 15px;
+            margin-bottom: 5px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .skill-category {
+            margin-bottom: 10px;
+        }
+        .skill-header {
+            font-weight: bold;
+            color: #0066CC;
+            margin-bottom: 3px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0066CC;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .future-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+        .comparison-box {
+            background-color: #e7f3ff;
+            border: 1px solid #0066CC;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 9.5pt;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .job-section {
+            margin-bottom: 15px;
+        }
+        .job-title-line {
+            color: #0066CC;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .company-indented {
+            margin-left: 20px;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+        .tutorial-link {
+            color: #0066CC;
+            text-decoration: underline;
+            font-weight: normal;
+        }
+        .tutorial-link:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin-top: 1px;
+            margin-bottom: 5px;
+            padding-left: 0px;
+            list-style-type: none;
+        }
+        li {
+            margin-bottom: 3px;
+            margin-left: 20px;
+            text-indent: -20px;
+        }
+        li:before {
+            content: "- ";
+        }
+        li ul {
+            margin-top: 3px;
+        }
+        
+        /* Web-specific styling for better browser viewing */
+        @media screen {
+            body {
+                background-color: #f5f5f5 !important;
+                margin: 0 !important;
+                padding: 20px !important;
+            }
+            
+            .web-container {
+                max-width: 8.5in;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: #fff;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                border-radius: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="web-container">
+    <div class="header">
+        <div class="header-content">
+            <img src="togayresım.png" alt="Togay Tunca" class="profile-image">
+            <div class="name-section">
+                <div class="name">TOGAY TUNCA</div>
+                <div class="title">Python & AI Educator | Technology Instructor | Future-Ready Learning Mentor</div>
+            </div>
+        </div>
+        <div class="contact">
+            📧 togay.tunca@gmail.com | 📱 +90 543 898-18-48 | 📍 Istanbul, Türkiye<br>
+        </div>
+    </div>
+
+    <div class="section-title">THE FUTURE IS NOW: AI TRANSFORMATION REALITY</div>
+    <div class="future-box">
+        <strong>We are living through the most transformative technological revolution in human history.</strong> Artificial Intelligence is not just changing individual industries—it's fundamentally reshaping how we approach problem-solving, creativity, and human potential itself.
+        <br><br>
+        <strong>The Old Way:</strong> Spend years learning complex technical skills, work within rigid systems, and accept limitations as "just how things are done."
+        <br><br>
+        <strong>The AI Way:</strong> Identify problems, understand processes, design solutions, and let AI handle the complex implementation. We're moving from "How do I code this?" to "What problem should I solve next?"
+        <br><br>
+        This isn't about replacing human creativity—it's about amplifying it exponentially. <strong>The question isn't whether AI will transform your field; it's whether you'll be leading that transformation or struggling to catch up.</strong>
+    </div>
+
+    <div class="section-title">AI TRANSFORMATION ACROSS INDUSTRIES</div>
+    
+    <div class="comparison-box">
+        <strong>📈 Business Analytics</strong><br>
+        <strong>Then:</strong> Months of data preparation, expensive consultants, static reports<br>
+        <strong>Now:</strong> Real-time insights, natural language queries, predictive modeling accessible to any business owner
+    </div>
+
+    <div class="comparison-box">
+        <strong>🏥 Healthcare</strong><br>
+        <strong>Then:</strong> Manual diagnosis, paper records, reactive treatment<br>
+        <strong>Now:</strong> AI-assisted diagnosis, personalized treatment plans, predictive health monitoring
+    </div>
+
+    <div class="comparison-box">
+        <strong>🎓 Education</strong><br>
+        <strong>Then:</strong> One-size-fits-all curriculum, limited resources, standardized testing<br>
+        <strong>Now:</strong> Personalized learning paths, AI tutors, real-time progress adaptation
+    </div>
+
+    <div class="comparison-box">
+        <strong>💼 Professional Services</strong><br>
+        <strong>Then:</strong> Manual document review, repetitive tasks, time-based billing<br>
+        <strong>Now:</strong> Automated analysis, value-based services, AI-enhanced decision making
+    </div>
+
+    <div class="section-title">MISSION & VISION</div>
+    <div class="summary-box">
+        As a <strong>self-taught developer</strong> with 25+ years of international experience, I've witnessed how technology transforms industries. Following the AI revolution, I've dedicated myself to bridging the gap between traditional professional expertise and AI-powered problem-solving.
+        <br><br>
+        <strong>My Mission:</strong> To empower kids, young adults, and business professionals with Python and AI skills that amplify their existing strengths rather than replace them. In today's rapidly evolving landscape, there has never been a better opportunity to create solutions we've always envisioned.
+        <br><br>
+        <strong>Teaching Philosophy:</strong> Focus on problem identification, process understanding, and solution design—let AI handle the complex implementation. This approach makes powerful technologies accessible to learners across all backgrounds and ages.
+    </div>
+
+    <div class="section-title">WHY THE FUTURE BELONGS TO AI-ENABLED PROFESSIONALS</div>
+    
+    <div class="future-box">
+        <strong>The New Professional Reality:</strong> In the next 5 years, the most successful professionals won't be those who can do everything manually—they'll be those who can identify problems, design solutions, and orchestrate AI systems to implement them.
+        <br><br>
+        <strong>For Kids & Young Adults:</strong> Starting with AI-integrated learning gives them a 10-year advantage in understanding how to leverage these tools as they become more sophisticated.
+        <br><br>
+        <strong>For Business Professionals:</strong> AI can amplify your existing expertise exponentially. Instead of changing careers, you can transform your current field by integrating AI capabilities.
+    </div>
+
+    <div class="section-title">TEACHING SPECIALIZATIONS</div>
+    <div class="skills-grid">
+        <div>
+            <div class="subsection-title">Python for Problem Solving</div>
+            <ul>
+                <li>Python fundamentals for all ages and skill levels</li>
+                <li>Practical automation and workflow enhancement</li>
+                <li>Building custom tools for specific industries</li>
+                <li>Web development with modern frameworks</li>
+            </ul>
+            
+            <div class="subsection-title">AI Development & Integration</div>
+            <ul>
+                <li>Problem identification and solution design with AI</li>
+                <li>Large Language Model integration and implementation</li>
+                <li>Building practical AI solutions from concept to deployment</li>
+                <li>AI-powered business automation</li>
+            </ul>
+        </div>
+        <div>
+            <div class="subsection-title">Future-Ready Skills</div>
+            <ul>
+                <li>Understanding AI's impact on different industries</li>
+                <li>Prompt engineering and AI interaction design</li>
+                <li>Integration of Python with existing workflows</li>
+                <li>Real-world project implementation</li>
+            </ul>
+            
+            <div class="subsection-title">Mentoring & Development</div>
+            <ul>
+                <li>Age-appropriate Python and AI skills development</li>
+                <li>Business-focused applications for professionals</li>
+                <li>Project-based learning methodologies</li>
+                <li>Continuous learning strategies for rapid adaptation</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">EDUCATIONAL OFFERINGS</div>
+
+    <div class="job-section">
+        <div class="job-title-line">✦ Python Programming for All Ages | Future-Ready Foundation</div>
+        <ul>
+            <li><strong>Target Audience:</strong> Kids (8+), young adults, and business professionals</li>
+            <li><strong>Approach:</strong> Project-based learning with real-world AI integration</li>
+            <li><strong>Unique Value:</strong> Combining programming skills with AI problem-solving mindset</li>
+        </ul>
+    </div>
+
+    <div class="job-section">
+        <div class="job-title-line">✦ AI Development & Practical Implementation</div>
+        <ul>
+            <li><strong>Focus:</strong> Building AI-powered solutions for business automation</li>
+            <li><strong>Philosophy:</strong> Understanding through hands-on implementation, not just theory</li>
+            <li><strong>Applications:</strong> Custom AI systems for various professional fields</li>
+        </ul>
+    </div>
+
+    <div class="job-section">
+        <div class="job-title-line">✦ Published Educational Resources</div>
+        <ul>
+            <li><a href="https://evinai.github.io/Tutorial-Python-0626/" class="tutorial-link">Python Learning for All Ages</a> - Comprehensive programming tutorial</li>
+            <li><a href="https://evinai.github.io/Tutorials_All_0626/" class="tutorial-link">AI Programming Fundamentals</a> - Introduction to AI development</li>
+            <li><a href="https://evinai.github.io/tutorials_2025/tr/" class="tutorial-link">AI Mastery Guide</a> - Complete AI technology guide</li>
+        </ul>
+    </div>
+
+    <div class="section-title">EXPERIENCE & CREDENTIALS</div>
+    
+    <div class="summary-box">
+        <strong>25+ Years International Experience:</strong> From casino surveillance management to international security consulting across multiple countries, I've successfully managed and mentored thousands of professionals while adapting to rapidly changing technological landscapes.
+        <br><br>
+        <strong>Self-Taught Technology Expert:</strong> Completed 40+ specialized courses in AI, machine learning, and software development, demonstrating commitment to continuous learning and practical application of emerging technologies.
+        <br><br>
+        <strong>Current Projects:</strong> AI-powered business analytics, customer behavior analysis systems, educational content platforms, and LLM-integrated applications for various industries.
+    </div>
+
+    <div class="section-title">TECHNICAL EXPERTISE</div>
+    <div class="skills-grid">
+        <div>
+            <div class="subsection-title">Programming & Development</div>
+            <ul>
+                <li>Python, FastAPI, Web Development, Packaging, Distribution</li>
+                <li>AI Frameworks: OpenAI, LangChain, LangGraph, Ollama</li>
+                <li>Cloud Platforms: AWS, GCP, Azure</li>
+                <li>Data Science: Pandas, NumPy, Scikit-learn</li>
+                <li>Web Technologies: HTML, CSS</li>
+                <li>Database Management: PostgreSQL, SQLite</li>
+                <li>Version Control: Git, GitHub</li>
+                <li>Deployment: Docker, CI/CD pipelines</li>
+            </ul>
+        </div>
+        <div>
+            <div class="subsection-title">Professional Certifications</div>
+            <ul>
+                <li><strong>AI & Machine Learning:</strong> 40+ specialized courses</li>
+                <li><strong>DeepLearning.AI:</strong> 16 advanced courses</li>
+                <li><strong>IBM:</strong> AI Developer & Data Science specializations</li>
+                <li><strong>Google Cloud:</strong> Generative AI with Vertex AI</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">STUDENT SUCCESS & LEARNING OUTCOMES</div>
+    
+    <div class="summary-box">
+        <strong>Practical Skills Development:</strong> Students gain hands-on experience building real applications that can be immediately applied in their chosen fields, not just theoretical knowledge.
+        <br><br>
+        <strong>Industry-Ready Knowledge:</strong> Learning curriculum based on real-world business requirements and current industry standards, ensuring practical relevance across various professions.
+        <br><br>
+        <strong>Portfolio Development:</strong> Every student completes multiple projects that demonstrate their Python and AI capabilities in contexts relevant to their interests and goals.
+        <br><br>
+        <strong>Continuous Support & Confidence Building:</strong> Ongoing mentorship and guidance throughout and beyond course completion, focusing on building both technical skills and professional confidence for applying Python and AI in any field.
+    </div>
+
+    <div class="section-title">EDUCATION</div>
+    <ul>
+        <li><strong>Associate Degree</strong> - Tourism and Hotel Management | economic and administrative sciences | University of Muğla Ortaca, Turkey (2009)</li>
+     
+        <li><strong>Languages:</strong> Turkish (Native), English (Advanced), German & Romanian (Elementary)</li>
+    </ul>
+
+    <div class="section-title">LEARNING PARTNERSHIP APPROACH</div>
+    <ul>
+        <li><strong>Teaching Formats:</strong> One-on-one, small groups, online courses, workshops</li>
+        <li><strong>Target Groups:</strong> Kids (8+), teenagers, young adults, business professionals</li>
+        <li><strong>Languages:</strong> Turkish (native) and English (advanced) instruction</li>
+        <li><strong>Schedule:</strong> Flexible including evenings and weekends</li>
+        <li><strong>Environment:</strong> In-person (Istanbul) and remote online sessions</li>
+        <li><strong>Consultation:</strong> Free initial consultation for personalized curriculum design</li>
+    </ul>
+
+    <hr style="margin-top: 30px; border: none; border-top: 1px solid #ccc;">
+    <p style="text-align: center; font-style: italic; color: #666; font-size: 10pt;">
+        Ready to prepare for the AI-powered future?<br>
+        Contact Togay for a free consultation and discover how Python & AI can transform your potential<br>
+        📧 togay.tunca@gmail.com | 📱 +90 543 898-18-48
+    </p>
+    
+    <script>
+    // Add page numbers when printing
+    window.onload = function() {
+        // CSS for page numbers in print mode only
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        style.media = 'print';
+        style.innerHTML = `
+            @page {
+                margin-bottom: 1cm;
+            }
+            
+            .page-number {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                font-size: 9pt;
+                color: #666;
+                padding: 10px;
+                content: counter(page);
+            }
+            
+            .page-number:after {
+                content: "Page " counter(page);
+            }
+            
+            .page-number {
+                counter-increment: page;
+            }
+            
+            /* Hide on screen */
+            @media screen {
+                .page-number {
+                    display: none;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Insert page number elements
+        var pageNumber = document.createElement('div');
+        pageNumber.className = 'page-number';
+        document.body.appendChild(pageNumber);
+    };
+    </script>
+    </div> <!-- Close web-container -->
+</body>
+</html>
